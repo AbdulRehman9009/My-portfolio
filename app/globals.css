@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@import "tailwindcss";
+
+
+:root {
+  /* Theme Colors */
+  --primary-pink: #ec4899;
+  --primary-indigo: #6366f1;
+
+  /* Soft Transparent Variants */
+  --pink-soft: rgba(236, 72, 153, 0.25);
+  --indigo-soft: rgba(99, 102, 241, 0.25);
+
+  /* Gradients */
+  --gradient-main: linear-gradient(to right, var(--pink-soft), var(--indigo-soft));
+  --gradient-strong: linear-gradient(to right, var(--primary-pink), var(--primary-indigo));
+
+  /* Text Colors */
+  --text-light: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.6);
+
+  /* Border & Shadows */
+  --border-glass: rgba(255, 255, 255, 0.15);
+  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  /* Radii */
+  --radius-xl: 1.5rem;
+  --radius-lg: 1rem;
+
+  /* Blur */
+  --blur-glass: blur(12px);
+}
+
+* {
+  font-family: "Roboto", serif;
+  
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: black;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
