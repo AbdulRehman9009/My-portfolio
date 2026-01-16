@@ -6,13 +6,7 @@ import Image from "next/image";
 import SkillsSection from "./Sections/skillSection";
 import Contact from "./Sections/Contact";
 import ReviewsSection from "./Sections/Reviews";
-
-
-
-
 import { TbArrowRight } from "react-icons/tb";
-
-
 
 export default function Home() {
   const floatVariants = {
@@ -37,7 +31,6 @@ export default function Home() {
     },
   };
 
-
   return (
     <>
       <Hero />
@@ -52,7 +45,7 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0.3 }}
       >
-        {/* Animated Background Orbs (same style as Hero) */}
+        {/* Animated Background Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ x: [0, 120, 0], y: [0, -80, 0] }}
@@ -67,7 +60,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
-          {/* Left: Floating Image with Glow & Orbit Ring */}
+          {/* Image */}
           <motion.div
             variants={floatVariants}
             animate="float"
@@ -78,8 +71,7 @@ export default function Home() {
               animate="pulse"
               className="absolute inset-0 w-full h-full bg-linear-to-r from-pink-500/30 to-indigo-500/30 rounded-full blur-3xl -z-10"
             />
-            <div className="relative">
-              {/* Soft Glow */}
+            <div className="relative flex justify-center">
               <div className="absolute inset-0 rounded-full bg-linear-to-r from-pink-500 to-indigo-600 blur-2xl opacity-60 animate-pulse" />
 
               <Image
@@ -87,18 +79,16 @@ export default function Home() {
                 alt="Abdul Rehman - Full Stack Web Developer"
                 width={500}
                 height={500}
-                className="rounded-full border-8 border-white/20 shadow-2xl relative z-10 hover:scale-105 transition-transform duration-500"
+                className="rounded-full border-8 border-white/20 shadow-2xl relative z-10 hover:scale-105 transition-transform duration-500 max-w-full h-auto"
                 priority
               />
 
-              {/* Orbiting Ring */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 className="absolute -inset-10 border-2 border-pink-400/30 rounded-full"
               />
 
-              {/* Small Progress Ring (Years of Experience) */}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
@@ -110,65 +100,68 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Right: Text Content */}
+          {/* Text */}
           <motion.div
-            className="flex flex-col gap-8 text-center lg:text-left"
+            className="flex flex-col gap-8 text-center lg:text-left items-center lg:items-start"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            {/* Title */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-5xl md:text-6xl font-bold text-white"
             >
-              About <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-indigo-400">Me</span>
+              About{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-pink-400 to-indigo-400">
+                Me
+              </span>
             </motion.h2>
 
-            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl"
             >
-              Hi, I'm Abdul Rehman—a passionate Full Stack Web Developer who loves turning ideas into beautiful,
-              high-performance digital experiences. I specialize in React, Next.js, Tailwind CSS, and modern backend
-              technologies to craft websites that not only look stunning but work flawlessly across all devices.
+              Hi, I&apos;m Abdul Rehman—a passionate Full Stack Web Developer who loves
+              turning ideas into beautiful, high-performance digital experiences.
+              I specialize in React, Next.js, Tailwind CSS, and modern backend
+              technologies to craft websites that not only look stunning but work
+              flawlessly across all devices.
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-lg text-white/70"
+              className="text-lg text-white/70 max-w-2xl"
             >
-              Whether it's a sleek portfolio, an e-commerce platform, or a complex web app,
-              I bring creativity, clean code, and pixel-perfect design to every project.
-              Let's build something amazing together!
+              Whether it&apos;s a sleek portfolio, an e-commerce platform, or a
+              complex web app, I bring creativity, clean code, and pixel-perfect
+              design to every project. Let&apos;s build something amazing together!
             </motion.p>
 
-            {/* Skill Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
               className="flex flex-wrap gap-3 justify-center lg:justify-start mt-6"
             >
-              {["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB"].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  {skill}
-                </span>
-              ))}
+              {["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB"].map(
+                (skill) => (
+                  <span
+                    key={skill}
+                    className="px-5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all duration-300"
+                  >
+                    {skill}
+                  </span>
+                )
+              )}
             </motion.div>
 
-            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -190,27 +183,11 @@ export default function Home() {
       </motion.section>
 
       <div className="h-10" />
-
       <SkillsSection />
-
       <div className="h-10" />
-
       <Contact />
-
       <div className="h-10" />
-
       <ReviewsSection />
-
-
-
-
-
-
-
-
-
-
-
     </>
   );
 }

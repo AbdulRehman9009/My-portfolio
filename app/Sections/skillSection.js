@@ -9,8 +9,13 @@ export default function SkillSection() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    startMarquee();
-  }, []);
+    marqueeControls.start({
+      x: ["0%", "-50%"],
+      transition: { duration: 25, repeat: Infinity, ease: "linear" },
+    });
+  }, [marqueeControls]);
+
+  const stopMarquee = () => marqueeControls.stop();
 
   const startMarquee = () => {
     marqueeControls.start({
@@ -18,8 +23,6 @@ export default function SkillSection() {
       transition: { duration: 25, repeat: Infinity, ease: "linear" },
     });
   };
-
-  const stopMarquee = () => marqueeControls.stop();
 
   const scrollLeft = () => {
     scrollRef.current?.scrollBy({ left: -400, behavior: "smooth" });
@@ -42,22 +45,19 @@ export default function SkillSection() {
     >
       {/* ✨ Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        {/* Large Pink Orb */}
         <motion.div
-          className="absolute top-[-120px] left-[-200px] w-[500px] h-[500px] rounded-full bg-pink-500/20 blur-3xl"
+          className="absolute -top-30 -left-50 w-125 h-125 rounded-full bg-pink-500/20 blur-3xl"
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
         />
 
-        {/* Medium Indigo Orb */}
         <motion.div
-          className="absolute bottom-[-80px] right-[-160px] w-[400px] h-[400px] rounded-full bg-indigo-500/20 blur-3xl"
+          className="absolute -bottom-20 -right-40 w-100 h-100 rounded-full bg-indigo-500/20 blur-3xl"
           animate={{ x: [-20, 40, -20], y: [0, 20, 0] }}
           transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
         />
 
-        {/* Subtle Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0e052a]/30 via-transparent to-[#05020f]/40" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0e052a]/30 via-transparent to-[#05020f]/40" />
       </div>
 
       {/* Heading */}
@@ -80,34 +80,17 @@ export default function SkillSection() {
         onMouseLeave={startMarquee}
         className="relative z-10 overflow-x-hidden px-4"
       >
-        <motion.div
-          className="flex gap-6 sm:gap-8"
-          animate={marqueeControls}
-        >
+        <motion.div className="flex gap-6 sm:gap-8" animate={marqueeControls}>
           {[...skills, ...skills].map((skill, index) => {
             const Icon = skill.icon;
             return (
               <motion.div
                 key={skill.name + index}
-                className="group shrink-0
-                  w-52 sm:w-60 md:w-64 lg:w-72
-                  h-[260px]
-                  cursor-pointer
-                  overflow-visible"
+                className="group shrink-0 w-52 sm:w-60 md:w-64 lg:w-72 h-65 cursor-pointer overflow-visible"
                 whileHover={{ scale: 1.08, y: -10 }}
                 transition={{ type: "spring", stiffness: 260 }}
               >
-                <div
-                  className="relative w-full h-full rounded-3xl
-                    bg-white/10 backdrop-blur-xl
-                    border border-transparent
-                    shadow-xl
-                    transition-all duration-500
-                    group-hover:border-pink-400/60
-                    group-hover:shadow-[0_0_40px_-4px_rgba(236,72,153,0.5)]
-                    overflow-visible"
-                >
-                  {/* Hover Glow */}
+                <div className="relative w-full h-full rounded-3xl bg-white/10 backdrop-blur-xl border border-transparent shadow-xl transition-all duration-500 group-hover:border-pink-400/60 group-hover:shadow-[0_0_40px_-4px_rgba(236,72,153,0.5)] overflow-visible">
                   <div className="absolute inset-0 bg-linear-to-br from-pink-500/20 to-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative z-10 p-5 sm:p-8 flex flex-col items-center justify-center text-center h-full">
@@ -132,17 +115,13 @@ export default function SkillSection() {
       <div className="relative z-10 flex justify-center gap-6 mt-10">
         <button
           onClick={scrollLeft}
-          className="p-3 sm:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/30
-             hover:bg-white/20 hover:border-pink-400/50
-             hover:scale-110 transition-all duration-300 shadow-lg"
+          className="p-3 sm:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 hover:border-pink-400/50 hover:scale-110 transition-all duration-300 shadow-lg"
         >
           <span className="text-2xl text-white">←</span>
         </button>
         <button
           onClick={scrollRight}
-          className="p-3 sm:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/30
-             hover:bg-white/20 hover:border-pink-400/50
-             hover:scale-110 transition-all duration-300 shadow-lg"
+          className="p-3 sm:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 hover:border-pink-400/50 hover:scale-110 transition-all duration-300 shadow-lg"
         >
           <span className="text-2xl text-white">→</span>
         </button>
