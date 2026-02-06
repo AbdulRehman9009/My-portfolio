@@ -36,7 +36,7 @@
 
 * {
   font-family: "Roboto", serif;
-  
+
 }
 
 
@@ -51,5 +51,4 @@
 body {
   background: black;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
