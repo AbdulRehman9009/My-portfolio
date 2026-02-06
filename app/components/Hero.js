@@ -134,7 +134,7 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500/20 to-indigo-600/20 blur-2xl" />
 
             <Image
-              src="/images/Hero.png"
+              src="/images/Avatar.png"
               alt="Abdul Rehman - Full Stack Developer"
               width={500}
               height={500}
